@@ -1,0 +1,9 @@
+quarkus:
+  http:
+    enable-compression: true
+    cors: true
+    root-path: "/api"
+  resteasy:
+    gzip:
+      enabled: true
+      max-input: 10M
