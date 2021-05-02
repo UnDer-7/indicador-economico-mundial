@@ -12,6 +12,7 @@ import com.gomes.mateus.core.domain.country.Indicator;
 import com.gomes.mateus.core.domain.shared.Page;
 import com.gomes.mateus.core.domain.shared.Query;
 import com.gomes.mateus.core.port.driven.CountryClient;
+import io.quarkus.cache.CacheResult;
 import java.util.List;
 import lombok.SneakyThrows;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
@@ -37,6 +38,7 @@ public class CountryClientImpl implements CountryClient {
 
   @Override
   @SneakyThrows
+  @CacheResult(cacheName = "list-countries")
   public Page<Country> listCountries(final Query query) {
     final var response = countryRestClient.listCountries(
       query.getPage(),
@@ -62,6 +64,7 @@ public class CountryClientImpl implements CountryClient {
 
   @Override
   @SneakyThrows
+  @CacheResult(cacheName = "search-indicator-by-country")
   public Page<Indicator> searchIndicatorByCountry(final String countryCode, final Query query) {
     final var response = countryRestClient.searchIndicatorByCountry(
       countryCode,
