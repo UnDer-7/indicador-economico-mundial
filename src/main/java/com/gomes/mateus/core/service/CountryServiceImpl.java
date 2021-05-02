@@ -22,6 +22,11 @@ public class CountryServiceImpl implements CountryService {
 
   @Override
   public Page<Indicator> searchIndicatorByCountry(final String countryCode, final Query query) {
-    return countryClient.searchIndicatorByCountry(countryCode, query);
+    final var indicatorPage = countryClient.searchIndicatorByCountry(countryCode, query);
+    indicatorPage.getList().sort(
+      (indicator1, indicator2) -> indicator2.getDate().compareToIgnoreCase(indicator1.getDate())
+    );
+
+    return indicatorPage;
   }
 }
