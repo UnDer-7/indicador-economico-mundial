@@ -19,4 +19,5 @@ public class IndicatorDTO implements Serializable {
 
   private CountryDTO country;
   private String date;
+  private Float value;
 }
