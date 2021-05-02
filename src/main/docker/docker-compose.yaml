@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  world-economic-indicator:
+    container_name: world-economic-indicator
+    ports:
+      - '8080:8080'
+    build:
+      context: ../../../
+      dockerfile: ./src/main/docker/Dockerfile.jvm
