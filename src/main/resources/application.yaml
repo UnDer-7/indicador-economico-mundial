@@ -7,3 +7,5 @@ quarkus:
     gzip:
       enabled: true
       max-input: 10M
+
+countryRestClient/mp-rest/url: https://api.worldbank.org
